@@ -1,11 +1,11 @@
-# Pure CSS Icon
+# OnePageShop with Vue.js
 
-**Pure CSS Icon** 單純使用CSS製作的Html頁面圖標
+**OnePageShop with Vue.js** 搭配 Vue.js 製作的單頁式的線上商店範例
 
-![pure-CSS-Icon](/images/pure-CSS-Icon.png "pure-CSS-Icon")
+![Onep Page Shop](/images/OnepPage-Shop.png "OnepPageShop")
 
 
-**Apple Watch - Workout Carousel** 新穎前衛的設計，可以用來點綴網站或部落格頁面。
+**OnePageShop with Vue.js** 單頁商品的好處是可以陳列多樣物品，加入購物籃反應相當快速直覺。
 
 - 無需執行命令行，直接下載使用瀏覽器打開
 - 不需要安裝/配置 html，css，javascript
