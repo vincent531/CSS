@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<style>
+* { box-sizing: border-box; }
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:500');
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+}
+
+.formulario {
+  background: #ffffff;
+  padding: 80px 32px;
+  border-radius: 20px;
+  box-shadow: 0px 10px 37px 0px rgba(0, 0, 0, 0.20);
+}
+.title {
+  margin-bottom: 24px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: .1em;
+  text-align: center;
+  line-height: 140%;
+  font-weight: 600;
+  font-size: 12px;
+}
+.input {
+	width: 80%;
+	height: 35px;
+	background: #ffffff;
+	box-sizing: border-box;
+	border: 1px solid #cccccc;
+	padding: 0 0 0 10px;
+	margin: 10px 0;
+	float: left;
+	font: 400 12px "Poppins", sans-serif;
+}
+.input--radio {
+  display: none;
+}
+.input--radio + label {
+  text-align: center;
+  display: inline-block;
+  width: 60px; height: 35px;
+  padding-top: 7px;
+  border: 1px solid #cccccc;
+  background: #ffffff;
+  font: 400 12px "Poppins", sans-serif;
+}
+.input--radio:first-child + label {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.input--radio:nth-child(3) + label {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.input--radio:checked + label {
+  border-color: #bbb;
+  -webkit-box-shadow: inset 2px 2px 15px -5px rgba(0,0,0,0.69);
+  -moz-box-shadow: inset 2px 2px 15px -5px rgba(0,0,0,0.69);
+  box-shadow: inset 2px 2px 10px -5px rgba(0,0,0,0.69), 2px 2px 10px -5px rgba(0,0,0,0.69);
+  background: #f9f9f9;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="formulario">
+  <h2 class="title">喜歡嗎?</h2>
+  
+  <div class="box">
+    <input type="radio" name="option" id="option-yes" class="input input--radio" value="Yes"><label for="option-yes">是</label>
+    <input type="radio" name="option" id="option-no" class="input input--radio" value="No"><label for="option-no">否</label>
+  </div>
+</div>
+
+</body>
+</html>
