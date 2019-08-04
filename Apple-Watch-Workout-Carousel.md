@@ -2,7 +2,6 @@
 
 **Apple Watch - Workout Carousel** 是使用 Owl Carousel 輪播製作的 HTML 頁面幻燈片(https://owlcarousel2.github.io/OwlCarousel2/))
 
-<<<<<<< HEAD
 ![Apple-Watch - Workout-Carousel 01](/images/Apple-Watch-Workout-Carousel-01.png "Apple-Watch - Workout-Carousel 01")
 
 ![Apple-Watch - Workout-Carousel 02](/images/Apple-Watch-Workout-Carousel-02.png "Apple-Watch - Workout-Carousel 02")
@@ -10,15 +9,6 @@
 ![Apple-Watch - Workout-Carousel 02](/images/Apple-Watch-Workout-Carousel-03.png "Apple-Watch - Workout-Carousel 03")
 
 ![Apple-Watch - Workout-Carousel 04](/images/Apple-Watch-Workout-Carousel-04.png "Apple-Watch - Workout-Carousel 04")
-=======
-![Apple-Watch - Workout-Carousel 01](images/Apple-Watch-Workout-Carousel-01.png "Apple-Watch - Workout-Carousel 01")
-
-![Apple-Watch - Workout-Carousel 02](images/Apple-Watch-Workout-Carousel-02.png "Apple-Watch - Workout-Carousel 02")
-
-![Apple-Watch - Workout-Carousel 02](images/Apple-Watch-Workout-Carousel-03.png "Apple-Watch - Workout-Carousel 03")
-
-![Apple-Watch - Workout-Carousel 04](images/Apple-Watch-Workout-Carousel-04.png "Apple-Watch - Workout-Carousel 04")
->>>>>>> 35b3cef662ea9f39fb6feff650feb3f624ed1f31
 
 
 **Apple Watch - Workout Carousel** 新穎前衛的設計，可以用來點綴網站或部落格頁面。
