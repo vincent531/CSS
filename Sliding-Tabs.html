@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<SCRIPT type=text/javascript src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></SCRIPT>
+<script>!window.jQuery && document.write('<SCRIPT src="jquery-1.7.1.min.js"><\\/SCRIPT>');</script>
+<meta charset="utf-8"> 
+<style>
+body {
+  font-family: "Century Gothic", "Lato", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nu-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 2em;
+  height: 75px;
+  z-index: 2;
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.nu-header--scrolled {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.nu-header--move-up {
+  -webkit-transform: translateY(-75px);
+          transform: translateY(-75px);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.nu-header__logo {
+  color: #000;
+}
+.nu-header__link {
+  margin-left: 1em;
+  color: #000;
+}
+
+.nu-hero-tabs,
+.nu-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background: #eee;
+  text-align: center;
+  padding: 0 2em;
+}
+.nu-hero-tabs h1,
+.nu-slide h1 {
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 1rem;
+}
+.nu-hero-tabs h3,
+.nu-slide h3 {
+  font-size: 1rem;
+  letter-spacing: 0.3rem;
+  opacity: 0.6;
+}
+
+.nu-hero-tabs-container {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.nu-hero-tabs-container--top-first {
+  position: fixed;
+  top: 75px;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.nu-hero-tabs-container--top-second {
+  position: fixed;
+  top: 0;
+}
+
+.nu-hero-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  color: #000;
+  letter-spacing: 0.1rem;
+  transition: all 0.5s ease;
+  font-size: 0.8em;
+}
+.nu-hero-tab:hover {
+  color: white;
+  background: rgba(102, 177, 241, 0.8);
+  transition: all 0.5s ease;
+}
+
+.nu-hero-tab-slider {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 6px;
+  background: #66B1F1;
+  transition: left 0.3s ease;
+}
+
+@media (min-width: 800px) {
+  .nu-hero-tabs h1,
+  .nu-slide h1 {
+    font-size: 3rem;
+  }
+  .nu-hero-tabs h3,
+  .nu-slide h3 {
+    font-size: 1rem;
+  }
+
+  .nu-hero-tab {
+    font-size: 1rem;
+  }
+}
+
+</style>
+
+</head>
+<body>
+<header class="nu-header">
+  <div class="nu-header__left">
+    <a href="" class="nu-header__logo">Lorem ipsum</a>
+  </div>
+</header>
+
+<section class="nu-hero-tabs">
+  <h1>Lorem ipsum</h1>
+  <h3>Mauris sed arcu hendrerit quam rutrum hendrerit non non ipsum</h3>
+  <div class="nu-hero-tabs-container">
+    <a class="nu-hero-tab" href="#tab-es6">Cras mauris</a>
+    <a class="nu-hero-tab" href="#tab-flexbox">Aliquam</a>
+    <a class="nu-hero-tab" href="#tab-react">Cras dolor</a>
+    <a class="nu-hero-tab" href="#tab-angular">Mauris</a>
+    <a class="nu-hero-tab" href="#tab-other">Quisque</a>
+    <span class="nu-hero-tab-slider"></span>
+  </div>
+</section>
+
+<main class="nu-main">
+  <section class="nu-slide" id="tab-es6">
+    <h1>Tab1</h1>
+    <h3>This is Description</h3>
+  </section>
+  <section class="nu-slide" id="tab-flexbox">
+    <h1>Tab2</h1>
+    <h3>This is Description</h3>
+  </section>
+  <section class="nu-slide" id="tab-react">
+    <h1>Tab3</h1>
+    <h3>This is Description</h3>
+  </section>
+  <section class="nu-slide" id="tab-angular">
+    <h1>Tab4</h1>
+    <h3>This is Description</h3>
+  </section>
+  <section class="nu-slide" id="tab-other">
+    <h1>Tab5</h1>
+    <h3>This is Description</h3>
+  </section>
+</main>
+<script>
+class StickyNavigation {
+  
+  constructor(){
+    this.currentId = null;
+    this.currentTab = null;
+    this.tabContainerHeight = 70;
+    this.lastScroll = 0;
+    let self = this;
+    $('.nu-hero-tab').click(function(){
+      self.onTabClick(event, $(this));
+    });
+    $(window).scroll(() => {this.onScroll(); });
+    $(window).resize(() => {this.onResize(); });
+  }
+  
+  onTabClick(event, element) {
+		event.preventDefault();
+		let scrollTop = $(element.attr('href')).offset().top - this.tabContainerHeight + 1;
+		$('html, body').animate({ scrollTop: scrollTop }, 600);
+    console.log('tab click' + this.currentId );
+	}
+	
+	onScroll() {
+		this.checkHeaderPosition();
+    this.findCurrentTabSelector();
+		this.lastScroll = $(window).scrollTop();
+	}
+  
+  onResize() {
+    if(this.currentId){
+      this.setSliderCss();
+    }
+  }
+  
+  checkHeaderPosition() {
+    const headerHeight = 75;
+    if($(window).scrollTop() > headerHeight){
+      $('.nu-header').addClass('nu-header--scrolled');
+    } else {
+      $('.nu-header').removeClass('nu-header--scrolled');
+    }
+    let offset = ($('.nu-hero-tabs').offset().top + $('.nu-hero-tabs').height() - this.tabContainerHeight) - headerHeight;
+    if($(window).scrollTop() > this.lastScroll && $(window).scrollTop() > offset){
+      $('.nu-header').addClass('nu-header--move-up');
+      $('.nu-hero-tabs-container').removeClass('nu-hero-tabs-container--top-first');
+      $('.nu-hero-tabs-container').addClass('nu-hero-tabs-container--top-second');
+    } else if($(window).scrollTop() < this.lastScroll && $(window).scrollTop() > offset){
+      $('.nu-header').removeClass('nu-header--move-up');
+      $('.nu-hero-tabs-container').removeClass('nu-hero-tabs-container--top-second');
+      $('.nu-hero-tabs-container').addClass('nu-hero-tabs-container--top-first');
+    } else{
+      $('.nu-header').removeClass('nu-header--move-up');
+      $('.nu-hero-tabs-container').removeClass('nu-hero-tabs-container--top-first');
+      $('.nu-hero-tabs-container').removeClass('nu-hero-tabs-container--top-second');
+    }
+  }
+  
+  findCurrentTabSelector(element) {
+    let newCurrentId;
+    let newCurrentTab;
+    let self = this;
+    $('.nu-hero-tab').each(function(){
+      let id = $(this).attr('href');
+      let offsetTop = $(id).offset().top - self.tabContainerHeight;
+      let offsetBottom = $(id).offset().top + $(id).height() - self.tabContainerHeight;
+      if($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom){
+        newCurrentId = id;
+        newCurrentTab = $(this);
+      }
+    });
+    if(this.currentId != newCurrentId || this.currentId === null){
+      this.currentId = newCurrentId;
+      this.currentTab = newCurrentTab;
+      this.setSliderCss();
+    }
+  }
+  
+  setSliderCss() {
+    let width = 0;
+    let left = 0;
+    if(this.currentTab) {
+      width = this.currentTab.css('width');
+      left = this.currentTab.offset().left;
+    }
+    $('.nu-hero-tab-slider').css('width', width);
+    $('.nu-hero-tab-slider').css('left', left);
+  }
+
+}
+
+new StickyNavigation();
+</script>
+</body>
+
+</html>
