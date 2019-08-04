@@ -2,7 +2,7 @@
 
 **OnePageShop with Vue.js** 搭配 Vue.js 製作的單頁式的線上商店範例
 
-![Onep Page Shop](/images/OnepPage-Shop.png "OnepPageShop")
+![One Page Shop](/images/OnePage-Shop.png "OnePageShop")
 
 
 **OnePageShop with Vue.js** 單頁商品的好處是可以陳列多樣物品，加入購物籃反應相當快速直覺。
