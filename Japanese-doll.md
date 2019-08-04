@@ -2,7 +2,7 @@
 
 **Japanese doll CSS Icon** 使用CSS製作的動態Icon
 
-![Japanese doll](/images/pure-CSS-Icon.png "Japanese doll")
+![Japanese doll](/images/Japanese-doll.png "Japanese doll")
 
 
 **Japanese doll CSS Icon** 純CSS製作的動態日本人形娃娃，適合裝飾日本風格的錯站或部落格。
