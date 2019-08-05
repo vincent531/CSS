@@ -1,13 +1,13 @@
 # Product Slider
 
-**Banner slick slider** 簡易的 slick 橫幅幻燈片
+**Product Slider** Swiper 製作的Html商品幻燈片
 
 ![Product Slider](/images/Product-Slider.png "Product Slider")
 
 
-**Product Slider** 單純設計給行動設備用的，在頁面上是以滑鼠拖動來切換。但本身包含了自動切換和隨機圖片功能
+**Product Slider** 除了點選兩側按鈕切換外，更支援觸碰滑動。不僅有美觀的商品展示頁面，更有較高互動性和行動友好支援
 
-- 無需執行命令行，直接下載使用瀏覽器打開
+- 無需執行命令行，直接下載Html使用瀏覽器啟
 - 不需要安裝/配置 html，css，javascript
 
 ## 遭遇問題?
