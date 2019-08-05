@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"> 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.js"></script>
+<meta charset="utf-8">
+<link rel="stylesheet/less" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
+
 <style>
 /* Palette */
 html,
@@ -379,8 +381,7 @@ a:active {
   margin-top: 40px;
   margin-bottom: 20px;
 }
-ttom:20px;
-}
+
 </style>
 </head>
 <body>
@@ -396,7 +397,7 @@ ttom:20px;
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand c-detail" href="#">
-                    <img src="https://k61.kn3.net/A/6/3/D/1/B/67D.png" alt="" />
+                    <img src="https://raw.githubusercontent.com/vincent531/css/master/images/67D.png" alt="" />
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -407,7 +408,7 @@ ttom:20px;
                     <li><a href="#Fonts" class="page-scroll">Fonts</a></li>
                 </ul>
                 <form class="navbar-form navbar-right">
-                    <button type="button" class="btn btn-default btn-icon"><i class="ion ion-heart"></i><span>Love</span></button>
+                    <button type="button" class="btn btn-default btn-icon"><i class="fa fa-heart"></i><span>Love</span></button>
                 </form>
                 </li>
                 </ul>
@@ -427,7 +428,7 @@ ttom:20px;
                         <div class="logotype">
                             <div class="app-icon">
                                 <div class="img-wrapper">
-                                    <img class="img" src="https://k61.kn3.net/A/6/3/D/1/B/67D.png" alt="" />
+                                    <img class="img" src="https://raw.githubusercontent.com/vincent531/css/master/images/67D.png" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -445,7 +446,7 @@ ttom:20px;
             </div>
             <div class="row">
                 <div class="col-xs-6 col-xs-offset-3">
-                  <img src="https://k60.kn3.net/1/A/E/7/A/7/D9A.png" alt="" class="img-responsive img-logo"/>
+                  <img src="https://raw.githubusercontent.com/vincent531/css/master/images/D9A.png" alt="" class="img-responsive img-logo"/>
                 </div>
             </div>
           <hr />
@@ -522,60 +523,7 @@ ttom:20px;
         </div>
     </div>
 </section>
-<footer class="footer section center-text">
-  <div class="panel b-panel">
-    <a href="https://codepen.io/joseluismurillorios">
-      <span class="c-subtle">By Jose Murillo</span>
-    </a>
-  </div>
-</footer>
 
-<script>
-// Cache selectors
-var lastId,
-    topMenu = $(".navbar-nav"),
-    topMenuHeight = topMenu.outerHeight()+15,
-    // All list items
-    menuItems = topMenu.find("a"),
-    // Anchors corresponding to menu items
-    scrollItems = menuItems.map(function(){
-      var item = $($(this).attr("href"));
-      if (item.length) { return item; }
-    });
 
-// Bind click handler to menu items
-// so we can get a fancy scroll animation
-menuItems.click(function(e){
-  var href = $(this).attr("href"),
-      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
-  $('html, body').stop().animate({ 
-      scrollTop: offsetTop
-  }, 300);
-  e.preventDefault();
-});
-
-// Bind to scroll
-$(window).scroll(function(){
-   // Get container scroll position
-   var fromTop = $(this).scrollTop()+topMenuHeight;
-   
-   // Get id of current scroll item
-   var cur = scrollItems.map(function(){
-     if ($(this).offset().top < fromTop)
-       return this;
-   });
-   // Get the id of the current element
-   cur = cur[cur.length-1];
-   var id = cur && cur.length ? cur[0].id : "";
-   
-   if (lastId !== id) {
-       lastId = id;
-       // Set/remove active class
-       menuItems
-         .parent().removeClass("active")
-         .end().filter("[href='#"+id+"']").parent().addClass("active");
-   }                   
-});
-</script>
 </body>
 </html>
