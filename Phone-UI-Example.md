@@ -5,7 +5,7 @@
 ![Phone UI Example](/images/Phone-UI-Example.png "Phone UI Example")
 
 
-**Phone UI Example** 看起來相當簡潔的UI設計，部分可以互動，擺在頁面上做介面展示應該有相當不錯的效果，唯舊版 Awesome font 少了兩個圖標，以後在補上吧...
+**Phone UI Example** 看起來相當簡潔的UI設計，部分可以互動，擺在頁面上做介面展示應該有相當不錯的效果。唯舊版 Awesomefont 少了兩個圖標，以後想到在補上吧...
 
 - 無需執行命令行，直接下載使用瀏覽器打開
 - 不需要安裝/配置 html，css，javascript
