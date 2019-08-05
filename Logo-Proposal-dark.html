@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<style>
+/* Palette */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #1e272c !important;
+  font-family: 'Titillium Web', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+body {
+  margin-bottom: 150px;
+}
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background: #6d7e85 !important;
+  border-radius: 0;
+}
+body::-webkit-scrollbar-track {
+  background: #263339 !important;
+  border-radius: 0;
+}
+button:focus {
+  outline: 0;
+}
+hr {
+  border-top: 1px solid #6d7e85 !important;
+}
+/* Theme */
+[data-color=colorPanel] {
+  background-color: #263339 !important;
+}
+[data-color=colorBackground] {
+  background-color: #1e272c !important;
+}
+[data-color=colorSubtle] {
+  background-color: #6d7e85 !important;
+}
+[data-color=colorMain] {
+  background-color: #69fd03 !important;
+}
+[data-color=colorDetail] {
+  background-color: #ffffff !important;
+}
+.transparent {
+  background-color: transparent;
+  border-color: transparent;
+}
+.c-background {
+  color: #1e272c !important;
+}
+.b-background {
+  background-color: #1e272c !important;
+  border-color: #1e272c !important;
+}
+.c-panel {
+  color: #263339 !important;
+}
+.b-panel {
+  background-color: #263339 !important;
+  border-color: #263339 !important;
+}
+.c-subtle {
+  color: #6d7e85 !important;
+}
+.b-subtle {
+  background-color: #6d7e85 !important;
+  border-color: #6d7e85 !important;
+}
+.c-main {
+  color: #69fd03 !important;
+}
+.b-main {
+  background-color: #69fd03 !important;
+  border-color: #69fd03 !important;
+}
+.c-detail {
+  color: #ffffff !important;
+}
+.b-detail {
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+.center-text {
+  text-align: center;
+}
+.light {
+  font-weight: 200;
+}
+.bold {
+  font-weight: 700;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.lower {
+  text-transform: none;
+}
+/* Navigation Bootstrap */
+.navbar {
+  min-height: 90px;
+}
+.navbar .navbar-brand {
+  float: left;
+  height: auto;
+}
+.navbar .navbar-toggle {
+  margin-top: 27px;
+  border-radius: 50%;
+  border: 0;
+  padding: 14px 10px;
+  transition: all 0.5s ease;
+}
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+  background-color: #263339 !important;
+}
+.navbar .navbar-toggle .icon-bar {
+  background-color: #ffffff !important;
+  transition: all 0.5s ease;
+}
+.navbar-nav > li > a {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  line-height: 27px;
+}
+.navbar-form {
+  margin-top: 14px;
+}
+.navbar-brand {
+  margin-bottom: 10px;
+}
+.navbar-brand img {
+  height: 45px;
+  margin-top: 1px;
+  padding-top: 4px;
+  margin-right: 15px;
+}
+.navbar-default .navbar-nav .active a {
+  background-color: transparent;
+  color: #69fd03 !important;
+}
+.navbar-default .navbar-nav .active a:focus {
+  background-color: transparent;
+}
+.navbar-default .navbar-nav .active a:hover {
+  background-color: transparent;
+  color: #69fd03 !important;
+}
+.navbar-default .navbar-nav a {
+  background-color: transparent;
+  color: #6d7e85 !important;
+  font-weight: 100;
+  font-size: 13pt;
+  letter-spacing: 3px;
+}
+.navbar-default .navbar-nav a:hover {
+  background-color: transparent;
+  color: #ffffff !important;
+}
+.navbar-form {
+  padding: 8px 15px;
+  border: 0;
+  box-shadow: none;
+}
+.navbar container-fluid {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  width: 100%;
+}
+.navbar-nav {
+  margin: 0 0px;
+}
+.navbar-default {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.navbar-collapse {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none;
+}
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+@media (max-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  form.navbar-form.navbar-right {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+/* Bootstrap */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+.btn {
+  margin: 0 auto;
+  border-radius: 32px;
+  padding: 14px 16px;
+  line-height: 0;
+}
+.btn:focus,
+.btn:active {
+  outline: 0 !important;
+}
+.btn.btn-default {
+  background-color: #1e272c !important;
+  color: #ffffff !important;
+  border-color: #69fd03 !important;
+  transition: all 0.2s ease;
+}
+.btn.btn-default:hover {
+  background-color: #69fd03 !important;
+  color: #1e272c !important;
+}
+.btn.btn-default:active {
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #1e272c !important;
+}
+.btn span {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 500;
+  font-size: 10pt;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-left: 10px;
+  margin-top: -5px;
+}
+i.ion {
+  line-height: 0;
+  padding-top: 6px;
+}
+a:focus,
+a:active {
+  outline: 0 !important;
+}
+.btn-icon {
+  outline: 0;
+  display: table;
+}
+.btn-icon i {
+  display: table-cell;
+  vertical-align: middle;
+}
+.btn-icon i.ion {
+  padding-top: 2px;
+}
+.btn-icon span {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+/* Body */
+.title {
+  margin: 0;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+.circle-inner {
+  margin: 30px auto;
+  display: block;
+  content: '';
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.5);
+}
+.panel {
+  border: 0;
+}
+.title-lg {
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  display: block;
+  font-size: 8vw;
+  line-height: 0.9;
+}
+.italic {
+  font-style: italic;
+}
+.logotype {
+  vertical-align: middle;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: table-cell;
+  font-size: 8vw;
+  font-weight: 200;
+  font-style: italic;
+  text-align: center;
+}
+.wrap-outer {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.wrap-inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+.app-icon {
+  display: inline-block;
+  border: 1px solid #6d7e85 !important;
+  width: 140px;
+  height: 140px;
+  border-radius: 40px;
+  box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.5);
+}
+.img-wrapper {
+  width: 140px;
+  height: 140px;
+  line-height: 115px;
+  text-align: center;
+}
+.img {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+@media (min-width: 767px) {
+  .navbar {
+    padding: 0 0;
+  }
+  .navbar > .container-fluid .navbar-brand {
+    margin-left: 0px;
+  }
+}
+/* Footer */
+.footer {
+  width: 100%;
+  height: 200px;
+}
+.footer .panel {
+  height: 100%;
+  margin-bottom: 0;
+}
+.footer span {
+  height: 100%;
+  line-height: 5.5;
+}
+.section {
+  padding-top: 120px;
+  margin-bottom: -40px;
+}
+.caption {
+  display: block;
+  margin-bottom: 15px;
+}
+.img-logo {
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+ttom:20px;
+}
+</style>
+</head>
+<body>
+<nav class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top transparent b-background">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand c-detail" href="#">
+                    <img src="https://k61.kn3.net/A/6/3/D/1/B/67D.png" alt="" />
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav center-text">
+                    <li class="active"><a href="#Home" class="page-scroll">Home</a></li>
+                    <li><a href="#Colors" class="page-scroll">Colors</a></li>
+                    <li><a href="#Fonts" class="page-scroll">Fonts</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <button type="button" class="btn btn-default btn-icon"><i class="ion ion-heart"></i><span>Love</span></button>
+                </form>
+                </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</nav>
+<section id="Home" class="section">
+    <h2 class="title center-text c-detail bold">Logotype</h2>
+    <div class="container-fluid c-detail">
+        <div class="section-logo center-text">
+            <div class="row c-subtle">
+                <div class="col-xs-6">
+                    <div class="wrap-outer">
+                        <div class="logotype">
+                            <div class="app-icon">
+                                <div class="img-wrapper">
+                                    <img class="img" src="https://k61.kn3.net/A/6/3/D/1/B/67D.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="wrap-outer">
+                        <div class="wrap-inner left">
+                            <p class="title-lg c-detail light">Natures Code</p>
+                            <hr />
+                            <span class="lower italic">Logotype Concept</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                  <img src="https://k60.kn3.net/1/A/E/7/A/7/D9A.png" alt="" class="img-responsive img-logo"/>
+                </div>
+            </div>
+          <hr />
+        </div>
+    </div>
+</section>
+<section id="Colors" class="section">
+    <h2 class="title center-text c-detail bold page-scroll">Colors</h2>
+    <div class="container-fluid c-detail">
+        <div class="row">
+            <div class="col-xs-12">
+            </div>
+        </div>
+        <div class="row c-subtle">
+            <div class="col-xs-4 col-md-2 col-md-offset-1  circle center-text">
+                <div class="circle-inner" data-color="colorPanel"></div>
+                <span class="color-text">#3d464b</span>
+            </div>
+            <div class="col-xs-4 col-md-2 circle center-text">
+                <div class="circle-inner" data-color="colorBackground"></div>
+                <span class="color-text">#2e363b</span>
+            </div>
+            <div class="col-xs-4 col-md-2 circle center-text">
+                <div class="circle-inner" data-color="colorSubtle"></div>
+                <span class="color-text">#7e8a90</span>
+            </div>
+            <div class="col-xs-4 col-md-2 col-xs-offset-2 col-md-offset-0 circle center-text">
+                <div class="circle-inner" data-color="colorMain"></div>
+                <span class="color-text">#a7ff00</span>
+            </div>
+            <div class="col-xs-4 col-md-2 circle center-text">
+                <div class="circle-inner" data-color="colorDetail"></div>
+                <span class="color-text">#ffffff</span>
+            </div>
+        </div>
+      <br /><br /><br />
+      <hr />
+    </div>
+</section>
+<section id="Fonts" class="section">
+    <h2 class="title center-text c-detail bold">Font</h2>
+    <div class="container-fluid c-detail">
+        <div class="section-logo center-text">
+            <div class="row">
+                <div class="col-xs-12">
+                </div>
+            </div>
+            <div class="row c-subtle">
+                <div class="col-xs-12">
+                    <div class="wrap-outer">
+                        <div class="wrap-inner">
+                            <p class="title-lg c-detail">Titillium</p>
+                            <span class="lower caption">Regular</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="wrap-outer">
+                        <div class="wrap-inner right">
+                            <p class="title-lg c-detail right light">Titillium</p>
+                            <span class="lower caption light">Light</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="wrap-outer">
+                        <div class="wrap-inner left">
+                            <p class="title-lg c-detail bold">Titillium</p>
+                            <span class="lower bold caption">Bold</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer section center-text">
+  <div class="panel b-panel">
+    <a href="https://codepen.io/joseluismurillorios">
+      <span class="c-subtle">By Jose Murillo</span>
+    </a>
+  </div>
+</footer>
+
+<script>
+// Cache selectors
+var lastId,
+    topMenu = $(".navbar-nav"),
+    topMenuHeight = topMenu.outerHeight()+15,
+    // All list items
+    menuItems = topMenu.find("a"),
+    // Anchors corresponding to menu items
+    scrollItems = menuItems.map(function(){
+      var item = $($(this).attr("href"));
+      if (item.length) { return item; }
+    });
+
+// Bind click handler to menu items
+// so we can get a fancy scroll animation
+menuItems.click(function(e){
+  var href = $(this).attr("href"),
+      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+  $('html, body').stop().animate({ 
+      scrollTop: offsetTop
+  }, 300);
+  e.preventDefault();
+});
+
+// Bind to scroll
+$(window).scroll(function(){
+   // Get container scroll position
+   var fromTop = $(this).scrollTop()+topMenuHeight;
+   
+   // Get id of current scroll item
+   var cur = scrollItems.map(function(){
+     if ($(this).offset().top < fromTop)
+       return this;
+   });
+   // Get the id of the current element
+   cur = cur[cur.length-1];
+   var id = cur && cur.length ? cur[0].id : "";
+   
+   if (lastId !== id) {
+       lastId = id;
+       // Set/remove active class
+       menuItems
+         .parent().removeClass("active")
+         .end().filter("[href='#"+id+"']").parent().addClass("active");
+   }                   
+});
+</script>
+</body>
+</html>
