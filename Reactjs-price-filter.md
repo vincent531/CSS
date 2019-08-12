@@ -5,7 +5,7 @@
 ![Radio Button](/images/Reactjs-price-filter.png "Radio Button")
 
 
-**Reactjs pricefilter** 簡單輕巧反應靈敏，可以在前端即時反應篩選物品
+**Reactjs pricefilter** 完全是 JS 操作 UI 的關係，使得它可以跟後端分離，達到即時互動、自動更新的效果
 
 - 無需執行命令行，直接下載HTML使用瀏覽器打開
 - 不需要安裝/配置 html，css，javascript
