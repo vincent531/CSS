@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+  <style>
+    body{margin:0;padding:0;width:100%;height:720px;background:#ecf0f1;}
+
+    #space{min-height:500px;margin-left:30%;margin-top:100px;}
+    div {background-repeat:no-repeat;background-size:cover;background-position:center;}
+
+    #phone{width:350px;height:500px;}
+    #phone > div{width:100%;height:100%;background-repeat:no-repeat;background-position:center;background-size:cover;}
+    header{height:100px;}
+
+    /**************PROFILE*********/
+    #profile > header, #profile > div{background:#3949ab}
+    #profile > div{ height:400px;}
+    #profile header .fa{color:white;font-size:25px;width:46.5%;margin-top:20px;font-weight:100;}
+    #profile .fa-times{margin-left:2.5%;}
+    #profile .fa-cog{text-align:right;}
+    #profileimage{width:100px;height:100px;border-radius:50%;margin:auto;}
+    #content p{color:white;font-size:15px;text-align:center;font-weight:300;text-transform:uppercase;}
+    #content button{background:#ff9800;margin-left:145px;margin-top:50px;}
+
+
+    /*************CHAT ******************/
+    #header{background:#1abc9c;height:50px;}
+    #chat > #header > p{color:white;font-size:15px;width:40%;margin-left:10%;height:50px;padding-top:10px;text-transform:uppercase;}
+    #header i{color:white;width:20%;}
+    #header i, #header p{float:left;height:25px;padding-top:12.5px;}
+    #chatroom{height:390px;}
+    #inpuroom{height:50px;}
+    #inpuroom > .fa{width:15%;height:50px;padding-top:12.5px;}
+    #inpuroom input{width:70%;border:none;background-color:#cfd8dc;height:50px;}
+    #inpuroom .fa, #inpuroom input{float:left;color:gray;}
+    #chat .fa{text-align:center;}
+
+    .fa-camera{background:rgba(39, 174, 96,0.5);}
+    .fa-paper-plane-o{background:rgba(241, 196, 15,0.5);}
+    #chatroom ul{width:100%;height:300px;}
+    #chatroom li{width:70%;min-height:60px;color:#34495e;margin-top:10px;padding-top:10px;padding-left:5px;border-radius:10px;}
+    #chatroom li > div{display:inline-block;}
+    .textarea{width:60%;margin-left:2%;}
+    .leftpushed{background:rgba(149, 165, 166,0.1);margin-left:5%;}
+    .rightpushed{background:rgba(149, 165, 166,0.3);margin-left:25%;}
+    .leftpushed .profilePic{display:inline-block;}
+    .profilePic{width:30px;height:30px;border-radius:50%;}
+
+
+
+    /************************CONTACT'*************/
+
+    #contact > div{width:100%;}
+    #C_header{background: #009688;height:50px;}
+    #C_header > p{color:white;width:70%;margin-left:10%;font-weight:800;float:left;}
+    #C_header i{width:20%;color:white;}
+    #C_header i,#C_header > p{float:left;height:25px;padding-top:12.5px;}
+    #contact_list{min-height:300px;}
+    #contact_list ul{width:100%;height:100%;}
+    #contact_list ul li{height:80px;width:100%;}
+    #contact_list div{float:left;height:100%;}
+    #contact_list .pic{width:30%;}
+    #contact_list .personInfo{width:70%;}
+    .personInfo{padding-left:5%;}
+    .personInfo .name{color:#34495e;font-weight:800;}
+    .personInfo .status{width:10px;height:10px;border-radius:50%;box-shadow:1px 1px rgba(20,20,20,0.5)}
+    .green{background:#27ae60;}
+    .gold{background:gold;}
+    .fa{cursor:pointer;}
+
+  </style>
+</head>
+<body>
+  <div id="space"></div>
+  <script>
+    var Profile = React.createClass({ displayName: "Profile",
+      getInitialState: function () {
+        return { name: "Game player", link: "https://avatars3.githubusercontent.com/u/4156639?s=460&v=4" };
+      },
+      render: function () {
+        var style = { backgroundImage: 'url(' + this.state.link + ')' };
+        return (
+          React.createElement("div", { id: "profile" },
+            React.createElement("header", null,
+              React.createElement("i", { className: "fa fa-times", "aria-hidden": "true" }),
+              React.createElement("i", { className: "fa fa-cog", "aria-hidden": "true" })),
+
+
+
+            React.createElement("div", { id: "content" },
+              React.createElement("div", { id: "profileimage", style: style }),
+              React.createElement("p", null, this.state.name),
+              React.createElement("button", { className: "btn-floating btn-large waves-effect waves-light", onClick: this.props.statusChange.bind(null, "contact") }, React.createElement("i", { className: "fa fa-long-arrow-right", "aria-hidden": "true" })))));
+
+
+
+
+      } });
+
+
+    var Chat = React.createClass({ displayName: "Chat",
+      getInitialState: function () {
+        return {
+          user: "Game player",
+          chat: [
+          { name: "Game player", link: "https://avatars3.githubusercontent.com/u/4156639?s=460&v=4", message: "改天再聊?" },
+          { name: this.props.person.name, link: "https://raw.githubusercontent.com/vincent531/css/master/images/128-1.jpg", message: "快還錢!..." }] };
+
+
+        },
+        render: function () {
+
+          return (
+
+            React.createElement("div", { id: "chat" },
+              React.createElement("div", { className: "card", id: "header" },
+                React.createElement("p", null, this.props.person.name),
+                React.createElement("i", { className: "fa fa-long-arrow-left", "aria-hidden": "true", onClick: this.props.statusChange.bind(null, "contact") })),
+
+              React.createElement("div", { id: "chatroom" },
+                React.createElement("ul", null,
+                  this.state.chat.map(function (msg, i) {
+                    var style = { backgroundImage: 'url(' + msg.link + ')' };
+                    return (
+                      msg.name === this.state.user ?
+                      React.createElement("li", { className: "leftpushed" },
+
+                        React.createElement("div", { className: "textarea" }, msg.message)) :
+
+
+                      React.createElement("li", { className: "rightpushed" },
+                        React.createElement("div", { className: "textarea" }, msg.message)));
+
+
+
+
+                  }.bind(this)))),
+
+
+              React.createElement("div", { id: "inpuroom" },
+                React.createElement("i", { className: "fa fa-camera", "aria-hidden": "true" }),
+
+                React.createElement("input", { type: "text", id: "message" }),
+
+                React.createElement("i", { className: "fa fa-paper-plane-o", "aria-hidden": "true" }))));
+
+
+
+
+        } });
+
+
+    var ContactList = React.createClass({ displayName: "ContactList",
+      getInitialState: function () {
+        return {
+          contact: [
+          { name: "Bangtan Boys", link: "https://raw.githubusercontent.com/vincent531/css/master/images/128.jpg", online: false },
+          { name: "Beyonce", link: "https://raw.githubusercontent.com/vincent531/css/master/images/128-1.jpg", online: true },
+          { name: "Rihanna", link: "https://raw.githubusercontent.com/vincent531/css/master/images/128-2.jpg", online: false },
+          { name: "Justin Timberlake", link: "https://raw.githubusercontent.com/vincent531/css/master/images/128-3.jpg", online: true },
+          { name: "Mary J Blige", link: "https://raw.githubusercontent.com/vincent531/css/master/images/128-4.jpg", online: true }] };
+
+
+
+        },
+        render: function () {
+          return (
+            React.createElement("div", { id: "contact" },
+              React.createElement("div", { id: "C_header" },
+                React.createElement("p", null, " Contact List"),
+                React.createElement("i", { className: "fa fa-long-arrow-left", "aria-hidden": "true", onClick: this.props.statusChange.bind(null, "profile") })),
+
+
+              React.createElement("div", { id: "contact_list" },
+                React.createElement("ul", null,
+                  this.state.contact.map(function (person) {
+                    var style = { backgroundImage: 'url(' + person.link + ')' };
+                    return (
+                      React.createElement("li", { onClick: this.props.partner.bind(null, person) },
+                        React.createElement("div", { className: "pic", style: style }),
+                        React.createElement("div", { className: "personInfo" },
+                          React.createElement("p", { className: "name" }, person.name),
+                          React.createElement("p", { className: person.online ? "status green" : "status gold" }))));
+
+
+
+
+                  }.bind(this))))));
+
+
+
+
+
+        } });
+
+
+
+
+
+
+
+    var Phone = React.createClass({ displayName: "Phone",
+      getInitialState: function () {
+        return { status: "profile", partner: {} };
+      },
+      switchStatus: function (status) {
+        return this.setState({ status: status });
+      },
+      partner: function (person) {
+    //console.log(person)
+
+    return this.setState({ status: "chat", partner: person });
+  },
+  render: function () {
+
+
+    return (
+
+      React.createElement("div", { id: "phone", className: "card" },
+
+        this.state.status == "profile" ? React.createElement(Profile, { statusChange: this.switchStatus }) : null,
+        this.state.status == "contact" ? React.createElement(ContactList, { statusChange: this.switchStatus, partner: this.partner }) : null,
+        this.state.status == "chat" ? React.createElement(Chat, { person: this.state.partner, statusChange: this.switchStatus }) : null));
+
+
+
+
+
+
+  } });
+
+
+
+    ReactDOM.render(React.createElement(Phone, null), document.getElementById("space"));
+  </script>
+</body>
+</html>

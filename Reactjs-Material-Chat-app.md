@@ -1,11 +1,11 @@
-# Reactjs price filter
+# Reactjs Material Chat app
 
-**Reactjs price filter** Reactjs 製作的購物車價格篩選器
+**Reactjs Material Chat app** Reactjs 製作的聊天界面
 
-![Radio Button](/images/Reactjs-price-filter.png "Radio Button")
+![Radio Button](/images/Reactjs-Material-Chat-app.png "Radio Button")
 
 
-**Reactjs pricefilter** 完全是 JS 操作 UI 的關係，使得它可以跟後端分離，達到即時互動、自動更新的效果
+**Reactjs Material Chat app** 用純JS在前端產生HTML，父子Component可透過props通訊
 
 - 無需執行命令行，直接下載HTML使用瀏覽器打開
 - 不需要安裝/配置 html，css，javascript
