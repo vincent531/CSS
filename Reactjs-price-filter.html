@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<style>
+/*Define the main color*/
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Sans Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "文泉驛微米黑", "WenQuanYi Micro Hei Light", "微軟正黑體", "Microsoft JhengHei", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  height: 100vh;
+  justify-content: center;
+}
+.container {
+  text-align: center;
+}
+.container > span {
+  display: block;
+  font-size: 2em;
+  margin-top: 20px;
+}
+.c-flex {
+  display: flex;
+}
+.c-flex.aic {
+  align-items: center;
+}
+.c-link {
+  cursor: pointer;
+}
+.c-slider > .c-flex.aic {
+  position: relative;
+}
+.c-slider input[type=range] {
+  /*The thumb height also determines the slider's height*/
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  height: 12px;
+  margin: 0 7px;
+  outline: none;
+  position: relative !important;
+  width: inherit;
+}
+.c-slider input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #96588a;
+  border-radius: 50%;
+  height: 12px;
+  position: relative !important;
+  top: -5px !important;
+  transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  width: 12px;
+}
+.c-slider input[type=range]::-webkit-slider-thumb:before {
+  content: '1111';
+  color: black;
+  dispaly: block;
+  position: absolute;
+}
+.c-slider input[type=range]::-moz-range-thumb {
+  -moz-appearance: none;
+  background: #96588a;
+  border: none;
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 12px;
+  position: relative !important;
+  top: -5px !important;
+  transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  width: 12px;
+}
+.c-slider input[type=range]::-webkit-slider-runnable-track {
+  background: #dbdbdb;
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 2px;
+  transition: background 350ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  width: 100%;
+}
+.c-slider input[type=range]::-moz-range-track {
+  background: #dbdbdb;
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 2px;
+  transition: background 350ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  width: 100%;
+}
+.c-slider input[type=range]:hover {
+  cursor: pointer;
+}
+.c-slider input[type=range]:hover::-webkit-slider-thumb {
+  -webkit-animation: pulse 650ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 350ms infinite alternate;
+          animation: pulse 650ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 350ms infinite alternate;
+  box-shadow: 0px 0px 0px 9px rgba(150,88,138, 0.8);
+}
+.c-slider input[type=range]:hover::-moz-range-thumb {
+  animation: pulse 650ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 350ms infinite alternate;
+  box-shadow: 0px 0px 0px 9px rgba(150,88,138, 0.8);
+}
+.c-slider input[type=range]:hover::-webkit-slider-runnable-track {
+  background: #bebebe;
+}
+.c-slider input[type=range]:hover::-moz-range-track {
+  background: #bebebe;
+}
+.c-slider input[type=range]:active::-webkit-slider-thumb {
+  -webkit-animation: none;
+          animation: none;
+  box-shadow: none;
+  -webkit-transform: scale(1.33);
+          transform: scale(1.33);
+}
+.c-slider input[type=range]:active::-moz-range-thumb {
+  animation: none;
+  box-shadow: none;
+  transform: scale(1.33);
+}
+.c-slider input[type=range] + div.progress {
+  background: #96588a;
+  border-radius: 2px;
+  height: 2px;
+  left: 0 !important;
+  margin-left: 7px !important;
+  position: absolute !important;
+  pointer-events: none;
+  top: 5px !important;
+}
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0px 0px 0px 9px rgba(150,88,138, 0.8);
+  }
+  17% {
+    box-shadow: 0px 0px 0px 9px rgba(150,88,138, 0.8);
+  }
+  83% {
+    box-shadow: 0px 0px 0px 6px rgba(150,88,138, 0.8);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 6px rgba(150,88,138, 0.8);
+  }
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0px 0px 0px 9px rgba(150,88,138, 0.8);
+  }
+  17% {
+    box-shadow: 0px 0px 0px 9px rgba(150,88,138, 0.8);
+  }
+  83% {
+    box-shadow: 0px 0px 0px 6px rgba(150,88,138, 0.8);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 6px rgba(150,88,138, 0.8);
+  }
+}
+
+</style>
+</head>
+<body>
+<div id="app"></app>
+<script>const isIncrease = true;
+
+class Slider extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+
+    this.state = {
+      width: 0 };
+
+  }
+
+  getDefaultProps() {
+    return {
+      disabled: false,
+      max: 1,
+      min: 0,
+      step: 0.01,
+      value: 0.5 };
+
+  }
+
+  componentDidMount() {
+    let { showProgress } = this.props;
+    let width = $(this.input).width();
+
+    if (showProgress) {
+      this.setState({ width });
+    }
+  }
+  handleChange(e) {
+    let val = parseFloat(e.target.value);
+    let { onChange } = this.props;
+    onChange(val);
+  }
+  handleClick(isPlus) {
+    let { disabled, max, min, step, value, onChange } = this.props;
+
+    if (disabled) {return;}
+
+    // Fix the decimal of value as the step's
+    let numArr = step.toString().split('.');
+    let decimal = 0;
+
+    if (numArr.length === 2) {decimal = numArr[1].length;}
+
+    let tmp = isPlus ? (value + step).toFixed(decimal) : (value - step).toFixed(decimal);
+    if (isPlus) {
+      value = parseFloat(tmp) > max ? max : parseFloat(tmp);
+    } else
+    {
+      value = parseFloat(tmp) < min ? min : parseFloat(tmp);
+    }
+
+    onChange(value);
+  }
+  render() {
+    let { id, className, disabled, max, min, step, value, showProgress, onPlus, onMinus } = this.props;
+    let { width } = this.state;
+    let prgs = (value - min) / (max - min) * width;
+    let prgsBar = showProgress ? React.createElement("div", { className: "progress", style: { width: `${prgs}px` } }) : '';
+
+    return (
+      React.createElement("div", { className: `c-flex aic c-slider ${className}` },
+      React.createElement("i", { className: "fa fa-search-minus c-link", "aria-hidden": "true", onClick: onMinus || this.handleClick.bind(this, !isIncrease) }),
+      React.createElement("div", { className: "c-flex aic" },
+      React.createElement("input", {
+        type: "range",
+        id: id,
+        ref: ref => {this.input = ref;},
+        disabled: disabled,
+        max: max,
+        min: min,
+        step: step,
+        value: value,
+        onChange: disabled ? null : this.handleChange }),
+
+      prgsBar),
+
+      React.createElement("i", { className: "fa fa-search-plus c-link", "aria-hidden": "true", onClick: onPlus || this.handleClick.bind(this, isIncrease) })));
+
+
+  }}
+
+
+Slider.defaultProps = {
+  disabled: false,
+  max: 1,
+  min: 0,
+  step: 0.01,
+  value: 0.5 };
+
+
+Slider.propTypes = {
+  id: React.PropTypes.string,
+  className: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  max: React.PropTypes.number,
+  min: React.PropTypes.number,
+  step: React.PropTypes.number,
+  value: React.PropTypes.number,
+  showProgress: React.PropTypes.bool,
+  onChange: React.PropTypes.func,
+  onMinus: React.PropTypes.func,
+  onPlus: React.PropTypes.func };
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+
+    this.state = {
+      value: 40 };
+
+  }
+
+  handleChange(e) {
+    let value = e;
+    this.setState({ value });
+  }
+
+  render() {
+    let { value } = this.state;
+    return React.createElement("div", { className: "container" },
+    React.createElement(Slider, { value: value, onChange: this.handleChange, showProgress: true, min: 0, max: 100, step: 5 }),
+    React.createElement("span", null, value));
+
+  }}
+
+
+ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
+</script>
+</body>
+</html>
